@@ -1,4 +1,4 @@
-{% extends "../templates/main.volt" %}
+{% extends "templates/main.volt" %}
 
 {% block content %}
 
