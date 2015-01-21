@@ -5,8 +5,15 @@ try {
     $loader = new \Phalcon\Loader();
     $loader->registerDirs(array(
         '../app/controllers/',
-        '../app/models/'
+        '../app/models/',
     ))->register();
+
+    //Register prefixes
+    $loader->registerPrefixes(
+        array(
+            "Library_"  => "../library/",
+        )
+    );
 
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
@@ -25,9 +32,6 @@ try {
     $di->set('view', function(){
         $view = new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
-        $view->registerEngines(array(
-            ".volt" => 'Phalcon\Mvc\View\Engine\Volt'
-        ));
 	return $view;
     });
 
